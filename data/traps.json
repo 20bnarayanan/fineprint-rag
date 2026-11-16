@@ -1,0 +1,253 @@
+{
+  "lease_a": {
+    "lease_id": "lease_a",
+    "traps": [
+      {
+        "id": "auto_renewal",
+        "category": "renewal",
+        "severity": "high",
+        "summary": "Lease auto-renews for a full year unless notice is given far in advance.",
+        "evidence": [
+          "This Lease automatically renews for a new 12-month term unless Tenant delivers written notice of non-renewal by certified mail at least 90 days before the end of the then-current term."
+        ]
+      },
+      {
+        "id": "repair_cost_shift",
+        "category": "maintenance",
+        "severity": "high",
+        "summary": "Tenant pays the first part of every repair regardless of cause.",
+        "evidence": [
+          "Tenant is responsible for the first $300 of the cost of any repair to the Premises, regardless of the cause of the damage."
+        ]
+      },
+      {
+        "id": "entry_no_notice",
+        "category": "landlord_entry",
+        "severity": "high",
+        "summary": "Landlord may enter at any time without notice.",
+        "evidence": [
+          "Landlord may enter the Premises at any time and without prior notice for inspections, repairs, or showings."
+        ]
+      },
+      {
+        "id": "late_fee_conflict",
+        "category": "late_fees",
+        "severity": "medium",
+        "summary": "Two sections disagree about when rent is late and what the fee is.",
+        "evidence": [
+          "Rent received after the 5th day of the month is subject to a late fee of 5% of the monthly rent.",
+          "Rent not received by the 2nd day of the month is delinquent and subject to a late charge of $75 plus $15 for each additional day."
+        ]
+      }
+    ],
+    "deadlines": [
+      {
+        "label": "Return signed move-in condition checklist",
+        "anchor": "move_in",
+        "offset_days": 7,
+        "evidence": "Tenant must return the signed move-in condition checklist to Landlord within 7 days after move-in; otherwise the Premises are deemed to be in good condition."
+      },
+      {
+        "label": "Deliver proof of renter's insurance",
+        "anchor": "lease_start",
+        "offset_days": 10,
+        "evidence": "Tenant shall deliver proof of renter's insurance to Landlord within 10 days after the start of the term."
+      }
+    ],
+    "lease_start": "January 1, 2027",
+    "lease_end": "December 31, 2027"
+  },
+  "lease_b": {
+    "lease_id": "lease_b",
+    "traps": [
+      {
+        "id": "early_termination_accel",
+        "category": "early_termination",
+        "severity": "high",
+        "summary": "Early termination accelerates all remaining rent with no duty to re-rent.",
+        "evidence": [
+          "If Tenant terminates this Lease early for any reason, Tenant shall owe all rent remaining through the end of the term, and Landlord has no duty to re-rent the Premises."
+        ]
+      },
+      {
+        "id": "nonrefundable_fee",
+        "category": "security_deposit",
+        "severity": "medium",
+        "summary": "Part of the deposit is declared non-refundable.",
+        "evidence": [
+          "Of the deposit, $400 is a non-refundable cleaning fee that Landlord keeps regardless of the condition of the Premises."
+        ]
+      },
+      {
+        "id": "attorney_fees_oneway",
+        "category": "legal_fees",
+        "severity": "medium",
+        "summary": "Tenant pays landlord's attorney fees regardless of who wins.",
+        "evidence": [
+          "Tenant shall pay Landlord's reasonable attorney's fees in any dispute arising under this Lease, regardless of which party prevails."
+        ]
+      },
+      {
+        "id": "deposit_conflict",
+        "category": "security_deposit",
+        "severity": "medium",
+        "summary": "Two sections disagree about how fast the deposit is returned.",
+        "evidence": [
+          "Landlord shall return the deposit, less lawful deductions for unpaid rent and damage beyond normal wear and tear, within 21 days after Tenant vacates and returns all keys.",
+          "Notwithstanding any other provision of this Lease, Landlord shall return any security deposit within 60 days after Tenant vacates."
+        ]
+      }
+    ],
+    "deadlines": [
+      {
+        "label": "Return signed move-in condition checklist",
+        "anchor": "move_in",
+        "offset_days": 7,
+        "evidence": "Tenant must return the signed move-in condition checklist to Landlord within 7 days after move-in; otherwise the Premises are deemed to be in good condition."
+      },
+      {
+        "label": "Deliver proof of renter's insurance",
+        "anchor": "lease_start",
+        "offset_days": 10,
+        "evidence": "Tenant shall deliver proof of renter's insurance to Landlord within 10 days after the start of the term."
+      }
+    ],
+    "lease_start": "February 1, 2027",
+    "lease_end": "January 31, 2028"
+  },
+  "lease_c": {
+    "lease_id": "lease_c",
+    "traps": [
+      {
+        "id": "sublet_penalty",
+        "category": "subletting",
+        "severity": "medium",
+        "summary": "Subletting, including short-term rentals, triggers termination and a penalty.",
+        "evidence": [
+          "Tenant shall not sublet the Premises or any part of it, including through short-term rental platforms, and any violation is grounds for immediate termination and a penalty of $1,000."
+        ]
+      },
+      {
+        "id": "utility_allocation",
+        "category": "utilities",
+        "severity": "medium",
+        "summary": "Landlord allocates shared utility costs at its sole discretion.",
+        "evidence": [
+          "Tenant shall pay a share of common-area water, sewer, and trash charges, as allocated by Landlord in its sole discretion."
+        ]
+      },
+      {
+        "id": "arbitration_waiver",
+        "category": "dispute_resolution",
+        "severity": "high",
+        "summary": "Jury trial waiver and binding arbitration with tenant paying arbitrator fees.",
+        "evidence": [
+          "Tenant waives the right to a jury trial and agrees that all disputes shall be resolved by binding arbitration, with Tenant paying the arbitrator's fees."
+        ]
+      },
+      {
+        "id": "rent_escalation",
+        "category": "rent_increase",
+        "severity": "medium",
+        "summary": "Landlord can raise rent on renewal by up to a fixed percentage.",
+        "evidence": [
+          "Upon each renewal, Landlord may increase the monthly rent by up to 8% with 30 days' written notice."
+        ]
+      }
+    ],
+    "deadlines": [
+      {
+        "label": "Return signed move-in condition checklist",
+        "anchor": "move_in",
+        "offset_days": 7,
+        "evidence": "Tenant must return the signed move-in condition checklist to Landlord within 7 days after move-in; otherwise the Premises are deemed to be in good condition."
+      },
+      {
+        "label": "Deliver proof of renter's insurance",
+        "anchor": "lease_start",
+        "offset_days": 10,
+        "evidence": "Tenant shall deliver proof of renter's insurance to Landlord within 10 days after the start of the term."
+      }
+    ],
+    "lease_start": "March 1, 2027",
+    "lease_end": "February 29, 2028"
+  },
+  "lease_d": {
+    "lease_id": "lease_d",
+    "traps": [
+      {
+        "id": "pet_fees",
+        "category": "pets",
+        "severity": "medium",
+        "summary": "Recurring pet rent plus a non-refundable per-animal fee.",
+        "evidence": [
+          "If Landlord consents to a pet, Tenant shall pay monthly pet rent of $50 per animal and a non-refundable pet fee of $500 per animal."
+        ]
+      },
+      {
+        "id": "guest_limit",
+        "category": "guests",
+        "severity": "low",
+        "summary": "Guests are limited to a few nights per month.",
+        "evidence": [
+          "Any guest who stays more than 5 nights in a calendar month is considered an unauthorized occupant and requires Landlord's written approval."
+        ]
+      },
+      {
+        "id": "auto_renewal",
+        "category": "renewal",
+        "severity": "high",
+        "summary": "Lease auto-renews for a full year unless notice is given far in advance.",
+        "evidence": [
+          "This Lease automatically renews for a new 12-month term unless Tenant delivers written notice of non-renewal by certified mail at least 90 days before the end of the then-current term."
+        ]
+      },
+      {
+        "id": "deposit_conflict",
+        "category": "security_deposit",
+        "severity": "medium",
+        "summary": "Two sections disagree about how fast the deposit is returned.",
+        "evidence": [
+          "Landlord shall return the deposit, less lawful deductions for unpaid rent and damage beyond normal wear and tear, within 21 days after Tenant vacates and returns all keys.",
+          "Notwithstanding any other provision of this Lease, Landlord shall return any security deposit within 60 days after Tenant vacates."
+        ]
+      }
+    ],
+    "deadlines": [
+      {
+        "label": "Return signed move-in condition checklist",
+        "anchor": "move_in",
+        "offset_days": 7,
+        "evidence": "Tenant must return the signed move-in condition checklist to Landlord within 7 days after move-in; otherwise the Premises are deemed to be in good condition."
+      },
+      {
+        "label": "Deliver proof of renter's insurance",
+        "anchor": "lease_start",
+        "offset_days": 10,
+        "evidence": "Tenant shall deliver proof of renter's insurance to Landlord within 10 days after the start of the term."
+      }
+    ],
+    "lease_start": "April 1, 2027",
+    "lease_end": "March 31, 2028"
+  },
+  "lease_e_clean": {
+    "lease_id": "lease_e_clean",
+    "traps": [],
+    "deadlines": [
+      {
+        "label": "Return signed move-in condition checklist",
+        "anchor": "move_in",
+        "offset_days": 7,
+        "evidence": "Tenant must return the signed move-in condition checklist to Landlord within 7 days after move-in; otherwise the Premises are deemed to be in good condition."
+      },
+      {
+        "label": "Deliver proof of renter's insurance",
+        "anchor": "lease_start",
+        "offset_days": 10,
+        "evidence": "Tenant shall deliver proof of renter's insurance to Landlord within 10 days after the start of the term."
+      }
+    ],
+    "lease_start": "May 1, 2027",
+    "lease_end": "April 30, 2028"
+  }
+}

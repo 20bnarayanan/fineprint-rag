@@ -1,0 +1,93 @@
+<svg viewBox="0 0 1100 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#b3402a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="640" fill="#ffffff"/>
+  <text x="550" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1d1d1f">Fine Print: plan, verify, then act</text>
+  <text x="550" y="56" text-anchor="middle" font-size="13" fill="#666">LangGraph state machine · LangChain structured output + tool calling · LangSmith tracing and evals</text>
+
+  <!-- Row 1: input -> ingest -> retrieve -> plan -->
+  <rect x="30" y="100" width="150" height="70" rx="10" fill="#f3f1ea" stroke="#9a8f6a"/>
+  <text x="105" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#3b3523">Lease text</text>
+  <text x="105" y="148" text-anchor="middle" font-size="12" fill="#6b6247">untrusted input</text>
+
+  <rect x="230" y="100" width="170" height="70" rx="10" fill="#e8f1fb" stroke="#4a86c5"/>
+  <text x="315" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#17406b">1 · Ingest</text>
+  <text x="315" y="146" text-anchor="middle" font-size="12" fill="#2d5a8c">clauses with ids (s01…)</text>
+  <text x="315" y="161" text-anchor="middle" font-size="12" fill="#2d5a8c">term dates</text>
+
+  <rect x="450" y="100" width="190" height="70" rx="10" fill="#e8f1fb" stroke="#4a86c5"/>
+  <text x="545" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#17406b">2 · Retrieve (RAG)</text>
+  <text x="545" y="146" text-anchor="middle" font-size="12" fill="#2d5a8c">FAISS + MiniLM embeddings</text>
+  <text x="545" y="161" text-anchor="middle" font-size="12" fill="#2d5a8c">top-k clauses per risk category</text>
+
+  <rect x="690" y="100" width="190" height="70" rx="10" fill="#eaf5ea" stroke="#4f9a54"/>
+  <text x="785" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1f5a24">3 · Plan</text>
+  <text x="785" y="146" text-anchor="middle" font-size="12" fill="#2f7a35">Haiku, prompt v1–v4</text>
+  <text x="785" y="161" text-anchor="middle" font-size="12" fill="#2f7a35">typed Plan (Pydantic)</text>
+
+  <path d="M180 135 H228" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+  <path d="M400 135 H448" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+  <path d="M640 135 H688" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Plan -> Validate -->
+  <path d="M785 170 V228" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Validate box (two tiers) -->
+  <rect x="520" y="230" width="520" height="190" rx="12" fill="#fdf3e4" stroke="#d08a1f"/>
+  <text x="780" y="256" text-anchor="middle" font-size="15" font-weight="700" fill="#6b4300">4 · Validate (cheap and exact first)</text>
+
+  <rect x="540" y="272" width="228" height="128" rx="8" fill="#ffffff" stroke="#d08a1f"/>
+  <text x="654" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#6b4300">Hard gates (code)</text>
+  <text x="654" y="316" text-anchor="middle" font-size="12" fill="#555">quote is verbatim in cited clause</text>
+  <text x="654" y="334" text-anchor="middle" font-size="12" fill="#555">evidence present · conflicts cite 2 clauses</text>
+  <text x="654" y="352" text-anchor="middle" font-size="12" fill="#555">no legal conclusions (scope)</text>
+  <text x="654" y="370" text-anchor="middle" font-size="12" fill="#555">"not found" claims checked vs text</text>
+  <text x="654" y="388" text-anchor="middle" font-size="11" fill="#999">deterministic · ~0 ms · no model</text>
+
+  <rect x="792" y="272" width="228" height="128" rx="8" fill="#ffffff" stroke="#d08a1f"/>
+  <text x="906" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#6b4300">LLM judge (Sonnet)</text>
+  <text x="906" y="316" text-anchor="middle" font-size="12" fill="#555">sees the FULL lease</text>
+  <text x="906" y="334" text-anchor="middle" font-size="12" fill="#555">missed risks · unsupported claims</text>
+  <text x="906" y="352" text-anchor="middle" font-size="12" fill="#555">groundedness 1–5 · pass / fail</text>
+  <text x="906" y="370" text-anchor="middle" font-size="12" fill="#555">different model than planner</text>
+  <text x="906" y="388" text-anchor="middle" font-size="11" fill="#999">runs only if hard gates pass</text>
+  <path d="M768 336 H790" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Repair loop -->
+  <rect x="270" y="262" width="190" height="86" rx="10" fill="#fbeceb" stroke="#b3402a"/>
+  <text x="365" y="288" text-anchor="middle" font-size="14" font-weight="700" fill="#7a2415">5 · Repair</text>
+  <text x="365" y="308" text-anchor="middle" font-size="12" fill="#8c3a2a">failures → feedback prompt</text>
+  <text x="365" y="324" text-anchor="middle" font-size="12" fill="#8c3a2a">widen context to missed clauses</text>
+  <text x="365" y="340" text-anchor="middle" font-size="11" fill="#b3402a">max 2 repairs</text>
+  <path d="M518 336 H462" stroke="#b3402a" stroke-width="1.6" fill="none" marker-end="url(#arrR)"/>
+  <text x="490" y="326" text-anchor="middle" font-size="11" fill="#b3402a">fail</text>
+  <path d="M365 262 V210 H725 V172" stroke="#b3402a" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#arrR)"/>
+  <text x="545" y="203" text-anchor="middle" font-size="11" fill="#b3402a">re-plan with feedback</text>
+
+  <!-- Outcomes -->
+  <path d="M780 420 V470" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+  <text x="792" y="450" font-size="11" fill="#2f7a35">pass</text>
+  <rect x="650" y="472" width="260" height="96" rx="10" fill="#eaf5ea" stroke="#4f9a54"/>
+  <text x="780" y="498" text-anchor="middle" font-size="14" font-weight="700" fill="#1f5a24">6 · Execute (tool calling)</text>
+  <text x="780" y="518" text-anchor="middle" font-size="12" fill="#2f7a35">create_agent + 3 tools</text>
+  <text x="780" y="535" text-anchor="middle" font-size="12" fill="#2f7a35">compute_deadline · add_calendar_event</text>
+  <text x="780" y="551" text-anchor="middle" font-size="12" fill="#2f7a35">draft_questions_email · then verified vs plan</text>
+
+  <path d="M570 420 V446 H430 V470" stroke="#b3402a" stroke-width="1.6" fill="none" marker-end="url(#arrR)"/>
+  <text x="500" y="440" text-anchor="middle" font-size="11" fill="#b3402a">fail and out of repairs</text>
+  <rect x="235" y="472" width="260" height="96" rx="10" fill="#fbeceb" stroke="#b3402a"/>
+  <text x="365" y="498" text-anchor="middle" font-size="14" font-weight="700" fill="#7a2415">Escalate to human</text>
+  <text x="365" y="518" text-anchor="middle" font-size="12" fill="#8c3a2a">unverified draft is labelled as such</text>
+  <text x="365" y="535" text-anchor="middle" font-size="12" fill="#8c3a2a">NO tools run, no side effects</text>
+
+  <!-- Legend / tracing band -->
+  <rect x="30" y="592" width="1040" height="34" rx="8" fill="#f6f6f6" stroke="#ddd"/>
+  <text x="550" y="614" text-anchor="middle" font-size="12" fill="#555">Every node is traced in LangSmith (tags: prompt version, retrieval mode, validator on/off) · offline evals: trap recall, fabricated-quote rate, false flags on a clean lease</text>
+  <text x="30" y="560" font-size="11" fill="#888">Tools can only run on the green path.</text>
+</svg>

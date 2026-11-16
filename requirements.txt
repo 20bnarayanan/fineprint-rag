@@ -1,0 +1,13 @@
+# Core
+langchain>=1.5,<2
+langchain-anthropic>=1.7,<2
+langgraph>=1.2,<2
+langsmith>=0.14
+langchain-community>=0.4        # FAISS vector store wrapper (emits a deprecation warning; see README)
+faiss-cpu>=1.12
+# Local embeddings (downloads all-MiniLM-L6-v2 on first run; set FINEPRINT_EMBEDDINGS=hashing to skip)
+langchain-huggingface>=1.2
+sentence-transformers>=3
+# Demo + utilities
+python-dotenv>=1.0
+pydantic>=2.7
