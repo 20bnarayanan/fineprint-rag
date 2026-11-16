@@ -128,28 +128,6 @@ Honest limitations: degrading a good plan is easier to detect than real planner 
 
 `data/build_leases.py` generates five synthetic leases and records ground truth in `data/traps.json`: 16 planted traps in four leases (auto-renewal buried in the term clause, repair cost-shifting, a late-fee conflict between two sections, one-way attorney fees, and so on) plus one clean lease with no traps, which measures false alarms. A test asserts every trap's evidence sentence appears verbatim in its lease.
 
-## What was run live
-
-One live session, one lease (`lease_a`, prompt v4), end to end through the CLI. After the fixes below: accepted on the first draft in about 32 s, all 4 planted traps found with verbatim quotes, 3 deadlines scheduled, 9 questions emailed, and the calendar and email verified against the plan.
-
-Live testing found six bugs that no offline test could have found. All are fixed and each has a regression test:
-
-| Found live | Effect | Fix |
-|---|---|---|
-| Models reject the `temperature` parameter | every real call crashed | removed it |
-| About 1 in 8 planner calls returned garbled JSON | wasted repair drafts, spurious escalations | parse failures retried inside the call, separate from the repair budget |
-| 4096 output-token cap truncated long plans | unparseable plan, escalation | limits raised |
-| Blanket `except Exception` turned an API error into "schema failure" | an outage looked like a content failure | only parse errors are absorbed; API errors fail loudly |
-| Planner labelled a dated obligation `kind="risk"` | executor skipped that deadline | executor and `deadline_recall` key off the `deadline` field |
-| Executor emailed 1 of about 12 questions, yet verification said True | false "verified" | verification checks events and the email question count |
-
-Small-sample observations from the live runs (not rates): the planner call took about 14 s and the judge about 7 s; tool-calling mode parsed 7 of 8 plans against 2 of 8 for `json_schema` on Haiku; the plan had 14 to 15 items for 4 planted traps, so it over-flags; with the hashing fallback, retrieval returned 14 of 17 clauses, so RAG barely narrowed the context on a lease this short.
-
-## Results
-
-**There are no eval numbers in this repo.** The 30-run eval grid and the judge calibration have not been run yet. Treat any expectation about which prompt version wins, or whether RAG helps, as a hypothesis until you run `make eval` and `make calibrate`. The grid isolates one change at a time: v1 to v4 prompts, then v4 with full context, then v4 with the validator off. Per run it records trap recall, high-severity recall, deadline recall, the fabricated-quote rate of the first draft against the final plan, escalation rate, average drafts, and flags on the clean lease.
-
-Not exercised: local MiniLM embeddings, the LangSmith upload path.
 
 ## Known limitations
 
