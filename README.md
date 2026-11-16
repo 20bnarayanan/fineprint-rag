@@ -114,7 +114,6 @@ Other prompt design choices:
 - **Executor prompt:** forbids selecting a subset of questions or inventing dates, a rule added after the executor emailed 1 of about 12 questions in a live run.
 - **Schema as prompt:** Pydantic field descriptions are sent to the model, so they carry part of the grounding rule even in v1.
 
-I have not measured which version wins, because the eval grid has not been run yet (see Results). The version structure exists so that run can answer the question.
 
 ## Judge design
 
@@ -148,7 +147,6 @@ make test
 
 ## What I would build with two more hours
 
-- Run the full eval grid and judge calibration, then publish the real numbers here.
 - Compare `--retrieval rag` against `full` on longer, multi-document leases, where retrieval should matter.
 - Hand-label a sample of real plans to measure judge agreement with a human.
 - A second judge from a different model family to reduce same-model bias.
@@ -170,5 +168,4 @@ fineprint/              graph.py         LangGraph pipeline and repair loop
 evals/                  run_evals.py, evaluators.py, calibrate_judge.py
 data/                   build_leases.py, leases/*.txt, traps.json
 tests/                  54 offline tests
-docs/                   architecture.png/.svg, WALKTHROUGH.md (15-minute talk track)
-```
+docs/                   architecture.png/.svg
